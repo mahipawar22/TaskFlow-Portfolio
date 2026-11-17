@@ -1,71 +1,81 @@
-# TaskFlow — Project Management Application
+# TaskFlow — Full-Stack Project Management Application
 
-**Full-stack portfolio project | ASP.NET Core Web API · React · SQL Server**
+**React · ASP.NET Core Web API (.NET 10) · SQL Server · Entity Framework Core · JWT**
 
-TaskFlow is a project and task management application with role-based workflows for administrators, project managers, and employees. This repository is a **public portfolio showcase only**. The application source code is maintained separately in a private repository.
+TaskFlow is a full-stack project and task management application. This **public repository is a portfolio showcase only**; application source code is kept in a separate private repository.
 
-## Overview
+## Application preview
 
-TaskFlow helps teams organize projects, assign tasks, track work status, and view progress through a dashboard.
+### Admin dashboard
+![Admin dashboard](screenshots/admin-dashboard.png)
+
+### Projects
+![Project management](screenshots/admin-projects.png)
+
+### Task board
+![Task workflow board](screenshots/admin-tasks.png)
+
+### Team management
+![Admin team management](screenshots/admin-team.png)
+
+### Employee experience
+| Employee dashboard | Employee task board |
+| --- | --- |
+| ![Employee dashboard](screenshots/employee-dashboard.png) | ![Employee task board](screenshots/employee-tasks.png) |
+
+<details><summary>Additional screenshots</summary>
+
+**Login**
+![Login](screenshots/login.png)
+
+**Employee project view**
+![Employee projects](screenshots/employee-projects.png)
+
+**Employee team view**
+![Employee team](screenshots/employee-team.png)
+
+</details>
 
 ## Features demonstrated
 
-- **Authentication:** Admin setup, login, and JWT-based API authentication.
-- **Project management:** Create projects and designate a project manager.
-- **Task management:** Create and assign tasks; track status through the workflow.
-- **Team management:** Admin can create employee and project-manager accounts and manage account activation.
-- **Role-based access:** Admin, ProjectManager, and Employee workflows with backend authorization.
-- **Dashboard:** Project and task summaries with recent activity views.
+- Initial administrator setup and sign-in using JWT authentication
+- Project creation and progress visualization
+- Task creation, assignment, and status updates (To Do, In Progress, In Review, Done)
+- Team account creation, roles, and activation management
+- Dashboard summaries and employee task views
+- SQL Server persistence through Entity Framework Core
 
-**Implementation note:** Role and project ownership are distinct. A manager's access to a specific project depends on the project ownership/authorization rules. This showcase does not claim those workflows have passed a full security audit.
+**Scope note:** Screenshots show the current UI, not a security certification. Role-based access and project ownership behavior require further testing; for example, an employee view currently displays project listings and a New Project button.
 
-## Technology stack
-
-| Layer | Technology |
-| --- | --- |
-| Frontend | React, Vite, JavaScript, Bootstrap |
-| Backend | ASP.NET Core Web API (.NET 10), C# |
-| Data | SQL Server, Entity Framework Core |
-| Authentication | JWT bearer authentication, ASP.NET Core Identity password hashing |
-| Architecture | API, Application, Domain, Infrastructure layers |
-
-## High-level architecture
+## Architecture
 
 ```mermaid
 flowchart LR
-    A[React / Vite UI] -->|HTTPS REST + JWT| B[ASP.NET Core Web API]
-    B --> C[Application / Domain logic]
-    C --> D[EF Core Infrastructure]
-    D --> E[(SQL Server)]
+  UI[React / Vite] -->|REST API + JWT| API[ASP.NET Core Web API]
+  API --> APP[Application Layer]
+  APP --> DOMAIN[Domain Layer]
+  APP --> INFRA[Infrastructure / EF Core]
+  INFRA --> DB[(SQL Server)]
 ```
 
-## Screenshots
+| Layer | Technologies |
+| --- | --- |
+| Frontend | React, Vite, JavaScript |
+| Backend | C#, ASP.NET Core Web API, .NET 10 |
+| Data access | Entity Framework Core, SQL Server |
+| Security | JWT bearer authentication, role-based authorization (testing ongoing) |
+| Organization | API, Application, Domain, Infrastructure |
 
-Screenshots will be added after reviewing them to ensure they contain **only fictional/demo data** and no passwords, tokens, emails, or other sensitive information.
+## Demo availability
 
-- Dashboard — pending
-- Projects — pending
-- Task board — pending
-- Team management — pending
+The application currently runs locally. **No public live demo is available**; `localhost` URLs are not accessible to recruiters. A demo video may be added later using fictional data.
 
-## Demonstration
+## Development and attribution
 
-**Demo video:** Coming soon. A short walkthrough can demonstrate admin login, project creation, team member creation, task assignment, and task status updates with fictional users.
+I configured, integrated, and tested core workflows across the frontend, API, and database. Development included AI assistance and third-party open-source dependencies. This portfolio does not assert exclusive ownership of AI-generated or third-party material.
 
-**Live demo:** Not published. A safe hosted demo would require separate demo accounts, sample data, rate limiting, and deployment security review.
+## Source code
 
-## My contribution
+The application source is maintained privately. This repository includes documentation and redacted screenshots only—no credentials, environment secrets, database exports, or application source.
 
-I integrated and tested core TaskFlow workflows, including account setup, project creation, task assignment, and task status persistence. The application was developed with AI assistance; this showcase describes the functionality and technical work without claiming exclusive authorship of all generated or third-party code.
-
-## Source code availability
-
-The source repository is private. This public repository intentionally contains **no backend/frontend source code, database dump, connection strings, environment files, JWT keys, or credentials**.
-
-## Project status
-
-Functional local development application. Security/dependency advisories and additional authorization edge-case testing should be addressed before production deployment.
-
-## Contact
-
-Add your LinkedIn profile and professional contact information here if you want recruiters to reach you.
+© 2026. Portfolio documentation and original presentation materials; third-party rights remain with their respective owners.
