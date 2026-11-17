@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+**/secrets.json
+**/appsettings.*.json
+**/bin/
+**/obj/
+**/node_modules/
+*.bak
+*.sql
+*.zip
+.DS_Store
